@@ -1,0 +1,44 @@
+#include "iostream"
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+// 배열 제어 하기 정수 배열 lst가 주어질 때, 배열의 중복값을 제거하고 배열 데이터를 내림차순으로 정렬해서 반환하는 Solution함수를 구현하시오.
+
+bool Compare(int a, int b)
+{
+	return a > b;
+}
+
+
+vector<int>	Solution(vector<int> lst)
+{
+	sort(lst.begin(), lst.end(), Compare);
+	lst.erase(unique(lst.begin(), lst.end()), lst.end());
+	return lst;
+}
+
+
+int main()
+{
+    vector<int> vecLst;
+    int iSize = 0;
+    cin >> iSize;
+
+    for (int i = 0; i < iSize; i++)
+    {
+        int iNum;
+        cin >> iNum;
+        vecLst.push_back(iNum);
+    }
+
+    vector<int> vecRes = Solution(vecLst);
+
+    for (int i = 0; i < vecRes.size(); i++)
+    {
+        cout << vecRes[i] << " ";
+    }
+    cout << "\n";
+
+	return 0;
+}
